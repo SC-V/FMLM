@@ -11,8 +11,7 @@ from google.oauth2 import service_account
 
 st.set_page_config(page_title="First Mile Monitor", layout="wide")
 
-google_big_query_creds = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"])
-gbq_credentials = service_account.Credentials.from_service_account_info(google_big_query_creds)
+gbq_credentials = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"])
 
 FILE_BUFFER_REPORT = io.BytesIO()
 
