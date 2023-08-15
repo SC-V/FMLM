@@ -1,3 +1,4 @@
 google-cloud-bigquery==3.11.4
 psycopg2-binary==2.9.7
 openpyxl==3.1.2
+pandas-gbq==0.19.2
