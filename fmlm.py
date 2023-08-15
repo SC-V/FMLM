@@ -207,32 +207,32 @@ with pandas.ExcelWriter(FILE_BUFFER_REPORT, engine='xlsxwriter') as writer:
         mime="application/vnd.ms-excel"
     )
 
-st.pydeck_chart(pdk.Deck(
-    map_style=None,
-    # height=500,
-    initial_view_state=pdk.ViewState(
-        latitude=-33.368855,
-        longitude=-70.695044,
-        zoom=10,
-        pitch=0,
-    ),
-    layers=[
-        # geojson_delivery_area,
-        pdk.Layer(
-            'ScatterplotLayer',
-            data=merged_frame,
-            get_position='[lon, lat]',
-            get_color='[88, 24, 69]',
-            get_radius=300,
+# st.pydeck_chart(pdk.Deck(
+#     map_style=None,
+#     # height=500,
+#     initial_view_state=pdk.ViewState(
+#         latitude=-33.368855,
+#         longitude=-70.695044,
+#         zoom=10,
+#         pitch=0,
+#     ),
+#     layers=[
+#         # geojson_delivery_area,
+#         pdk.Layer(
+#             'ScatterplotLayer',
+#             data=merged_frame,
+#             get_position='[lon, lat]',
+#             get_color='[88, 24, 69]',
+#             get_radius=300,
 
-            pickable=False
-        ),
-        pdk.Layer(
-            'ScatterplotLayer',
-            get_position=[-70.6945098, -33.3688048],
-            get_color='[0, 128, 255, 160]',
-            get_radius=1000,
-            pickable=True
-        )
-    ],
-))
+#             pickable=False
+#         ),
+#         pdk.Layer(
+#             'ScatterplotLayer',
+#             get_position=[-70.6945098, -33.3688048],
+#             get_color='[0, 128, 255, 160]',
+#             get_radius=1000,
+#             pickable=True
+#         )
+#     ],
+# ))
