@@ -90,6 +90,7 @@ def get_scan_frame(date_limit):
             json_value(data, '$.corp_client_id') corp_client_id,
             json_value(data, '$.courier_uuid') courier_uuid,
             json_value(data, '$.scanned_barcode') scanned_barcode_value,
+            json_value(data, '$.store_name') store_name,
             json_value(data, '$.scan_location._latitude') lat,
             json_value(data, '$.scan_location._longitude') lon
         FROM `yango-pick-mvp.scan_events_firestore_export.scan_events_raw_latest`
@@ -182,7 +183,7 @@ if filtered_statuses:
     merged_frame = merged_frame[merged_frame['pick_status'].isin(filtered_statuses)]
 
 visible_frame = merged_frame[["scan_dttm", "created_at", "scanned_barcode_value", "pick_status", "tariff",
-                              "corp_client_id", "courier_uuid", "external_id", "lo_code", "claim_id",
+                              "corp_client_id", "store_name", "courier_uuid", "external_id", "lo_code", "claim_id",
                               "scannable_qr",]]
 st.dataframe(visible_frame,
              use_container_width=True,
