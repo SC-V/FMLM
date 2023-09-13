@@ -207,6 +207,8 @@ with pandas.ExcelWriter(FILE_BUFFER_REPORT, engine='xlsxwriter') as writer:
         file_name=f"status_orders_{TODAY}.xlsx",
         mime="application/vnd.ms-excel"
     )
+    
+st.dataframe(proxy_frame)
 
 # st.pydeck_chart(pdk.Deck(
 #     map_style=None,
