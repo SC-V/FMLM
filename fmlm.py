@@ -208,7 +208,7 @@ with pandas.ExcelWriter(FILE_BUFFER_REPORT, engine='xlsxwriter') as writer:
         mime="application/vnd.ms-excel"
     )
     
-# st.dataframe(proxy_frame)
+st.dataframe(proxy_frame)
 
 # st.pydeck_chart(pdk.Deck(
 #     map_style=None,
