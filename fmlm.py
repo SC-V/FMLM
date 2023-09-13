@@ -124,7 +124,7 @@ proxy_orders = get_historical_orders(rf"""
 proxy_frame = pandas.DataFrame(proxy_orders,
                                columns=["barcode", "external_id", "lo_code", "request_id", "claim_id",
                                         "tariff", "platform_status", "cargo_status", "created_at", "proxy_client_id"])
-proxy_frame = proxy_frame[~proxy_frame.external_id.str.contains("_RETRY_")]
+# proxy_frame = proxy_frame[~proxy_frame.external_id.str.contains("_RETRY_")]
 
 col_date, col_time, _, col_scanned, col_errors = st.columns([1, 1, 0.3, 0.3, 0.3])
 col_courier, col_client, col_tariff, col_status = st.columns(4)
