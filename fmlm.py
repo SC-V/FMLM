@@ -14,6 +14,7 @@ st.set_page_config(page_title="First Mile Monitor", layout="wide")
 gbq_credentials = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"])
 
 FILE_BUFFER_REPORT = io.BytesIO()
+FILE_BUFFER_PROXY = io.BytesIO()
 
 
 @st.cache_resource
@@ -210,6 +211,18 @@ with pandas.ExcelWriter(FILE_BUFFER_REPORT, engine='xlsxwriter') as writer:
     
 st.dataframe(proxy_frame)
 
+with pandas.ExcelWriter(FILE_BUFFER_PROXY, engine='xlsxwriter') as writer:
+    proxy_frame.to_excel(writer, sheet_name='proxy_dump')
+    writer.close()
+
+    TODAY = datetime.datetime.now(timezone("America/Santiago")).strftime("%Y-%m-%d")
+    st.download_button(
+        label="Download proxy report",
+        data=FILE_BUFFER_PROXY,
+        file_name=f"proxy_orders.xlsx",
+        mime="application/vnd.ms-excel"
+    )
+    
 # st.pydeck_chart(pdk.Deck(
 #     map_style=None,
 #     # height=500,
