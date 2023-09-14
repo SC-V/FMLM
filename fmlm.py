@@ -127,7 +127,7 @@ proxy_orders = get_historical_orders(rf"""
         created_at AT TIME ZONE 'America/Santiago',
         client_id
     FROM orders
-    WHERE is_redelivery = FALSE AND created_at BETWEEN '2023-09-01' AND '2023-09-30';
+    WHERE is_redelivery = FALSE AND created_at BETWEEN '2023-08-15' AND '2023-09-30';
 """)
 
 proxy_frame = pandas.DataFrame(proxy_orders,
