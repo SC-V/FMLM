@@ -38,6 +38,14 @@ def refactor_lo_code(row):
     return row
 
 
+def restore_prefixes(row):
+    if row["corp_client_id"] == "Sally Beauty":
+        row["scanned_barcode_value"] = "00000" + str(row["scanned_barcode_value"])
+    elif row["corp_client_id"] == "Sparta NB":
+        row["scanned_barcode_value"] = "0000" + str(row["scanned_barcode_value"])
+    return row
+    
+
 def normalize_coordinates(row):
     row["lat"] = float(row["lat"])
     row["lon"] = float(row["lon"])
@@ -145,6 +153,7 @@ with col_time:
         disabled=True)
 
 scan_frame = get_scan_frame(date_limit)
+scan_frame = scan_frame.apply(lambda row: restore_prefixes(row), axis=1)
 
 merged_frame = pandas.merge(scan_frame, proxy_frame, how="left", left_on="scanned_barcode_value", right_on="barcode")
 merged_frame = merged_frame.apply(lambda row: set_barcode_image(row), axis=1)
